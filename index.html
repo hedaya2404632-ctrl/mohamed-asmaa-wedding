@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#d79b9b">
+<title>دعوة زفاف محمد وأسماء</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%;background:#ead0cc;font-family:Arial,Tahoma,sans-serif}
+body{display:flex;justify-content:center;overflow-x:hidden}
+.app{width:100%;max-width:700px;min-height:100vh;position:relative;perspective:1400px;overflow:hidden}
+.page{position:relative;width:100%;display:none}
+.page.active{display:block}
+.page img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+.tap-area{position:absolute;inset:0;border:0;background:transparent;padding:0;margin:0;z-index:10;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#cover.opening{display:block;transform-origin:top center;animation:openCover 1.2s cubic-bezier(.68,-.05,.25,1) forwards;z-index:5}
+#invitation.reveal{display:block;animation:revealPage 1.2s cubic-bezier(.2,.75,.2,1) forwards}
+@keyframes openCover{
+0%{opacity:1;transform:rotateX(0) scale(1) translateY(0)}
+35%{opacity:1;transform:rotateX(-8deg) scale(.99) translateY(-1%)}
+100%{opacity:0;transform:rotateX(-72deg) scale(.88) translateY(-14%)}
+}
+@keyframes revealPage{
+0%{opacity:0;transform:translateY(18%) scale(.95)}
+55%{opacity:1;transform:translateY(4%) scale(.985)}
+100%{opacity:1;transform:translateY(0) scale(1)}
+}
+.sparkles{position:absolute;inset:0;pointer-events:none;z-index:11;opacity:0}
+.sparkles.show{animation:fadeSparkles 1.25s ease-out forwards}
+.sparkles i{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 12px 4px rgba(255,220,220,.8);animation:twinkle .7s infinite alternate}
+.sparkles i:nth-child(1){left:18%;top:28%}.sparkles i:nth-child(2){left:76%;top:22%;animation-delay:.12s}
+.sparkles i:nth-child(3){left:30%;top:58%;animation-delay:.25s}.sparkles i:nth-child(4){left:82%;top:63%;animation-delay:.08s}
+.sparkles i:nth-child(5){left:51%;top:40%;animation-delay:.35s}
+@keyframes fadeSparkles{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+@keyframes twinkle{from{transform:scale(.5);opacity:.4}to{transform:scale(1.5);opacity:1}}
+.control{position:fixed;z-index:30;border:0;background:rgba(255,255,255,.75);color:#8f5e5e;border-radius:50%;width:42px;height:42px;font-size:20px;display:none}
+#back{top:12px;right:12px}
+#musicBtn{bottom:14px;left:14px}
+@media(min-width:701px){body{padding:18px 0}.app{box-shadow:0 10px 40px rgba(80,40,40,.22)}}
+</style>
+</head>
+<body>
+<main class="app">
+<section id="cover" class="page active">
+<img src="cover.png" alt="غلاف الدعوة">
+<button class="tap-area" onclick="openInvitation()" aria-label="فتح الدعوة"></button>
+<div id="sparkles" class="sparkles"><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<section id="invitation" class="page">
+<img src="invitation.png" alt="تفاصيل الدعوة">
+<button class="tap-area" onclick="openMap()" aria-label="فتح الموقع"></button>
+</section>
+</main>
+
+<button id="back" class="control" onclick="goBack()">‹</button>
+<button id="musicBtn" class="control" onclick="toggleMusic()">🎵</button>
+<audio id="music" src="romantic-guitar.wav" loop preload="auto"></audio>
+
+<script>
+const cover=document.getElementById('cover');
+const invitation=document.getElementById('invitation');
+const sparkles=document.getElementById('sparkles');
+const music=document.getElementById('music');
+
+function openInvitation(){
+  if(cover.classList.contains('opening')) return;
+  cover.classList.remove('active');
+  cover.classList.add('opening');
+  invitation.classList.add('reveal');
+  sparkles.classList.add('show');
+  document.getElementById('back').style.display='block';
+  document.getElementById('musicBtn').style.display='block';
+
+  music.play().catch(()=>{});
+
+  setTimeout(()=>{
+    cover.style.display='none';
+    invitation.style.display='block';
+  },1200);
+}
+
+function toggleMusic(){
+  if(music.paused) music.play();
+  else music.pause();
+}
+
+function openMap(){
+  window.open('https://www.google.com/maps/search/?api=1&query=Riviera+Hall%2C+Hihya%2C+Sharqia%2C+Egypt','_blank');
+}
+
+function goBack(){
+  music.pause();
+  invitation.className='page';
+  cover.className='page active';
+  cover.style.display='block';
+  invitation.style.display='none';
+  sparkles.classList.remove('show');
+  document.getElementById('back').style.display='none';
+  document.getElementById('musicBtn').style.display='none';
+}
+</script>
+</body>
+</html>
