@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>محمد & أسماء — دعوة زفاف</title>
+  <meta name="theme-color" content="#d8c2a8">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;font-family:"Noto Naskh Arabic","Segoe UI",Tahoma,sans-serif}
+    body{
+      background:#eadbc9;
+      color:#4a382b;
+      overflow-x:hidden;
+    }
+    .page{
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      padding:24px 14px;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,.42), transparent 28%),
+        radial-gradient(circle at 80% 85%, rgba(130,95,65,.10), transparent 32%),
+        #eadbc9;
+    }
+    .wrap{width:min(430px,100%); perspective:1200px}
+    .envelope{
+      position:relative; width:100%; aspect-ratio:1.32/1;
+      border-radius:18px; background:#cdb397;
+      box-shadow:0 18px 50px rgba(72,49,31,.22);
+      overflow:hidden;
+    }
+    .back{position:absolute;inset:0;background:#cdb397}
+    .pocket{
+      position:absolute;left:0;right:0;bottom:0;height:64%;
+      background:linear-gradient(135deg,#d9c1a4,#c5a887);
+      clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);
+      z-index:3;
+    }
+    .flap{
+      position:absolute;left:0;right:0;top:0;height:68%;
+      background:linear-gradient(180deg,#d7bea0,#c5a786);
+      clip-path:polygon(0 0,100% 0,50% 78%);
+      transform-origin:50% 0;
+      transition:transform 1s cubic-bezier(.2,.75,.2,1), z-index .1s;
+      z-index:5;
+    }
+    .seal{
+      position:absolute;z-index:6;left:50%;top:49%;
+      transform:translate(-50%,-50%);
+      width:62px;height:62px;border-radius:50%;
+      display:grid;place-items:center;
+      background:#8b6b4f;color:#fff8ef;
+      border:2px solid rgba(255,255,255,.5);
+      box-shadow:0 7px 18px rgba(67,44,25,.25);
+      font-family:Georgia,serif;font-size:21px;
+      transition:opacity .35s, transform .35s;
+    }
+    .letter{
+      position:absolute;z-index:2;left:7%;right:7%;top:8%;bottom:8%;
+      border-radius:12px;background:#fbf5ec;
+      padding:24px 18px 20px;
+      text-align:center;
+      overflow:auto;
+      transform:translateY(55%);
+      transition:transform 1s cubic-bezier(.2,.75,.2,1);
+      box-shadow:0 8px 20px rgba(72,49,31,.14);
+    }
+    .letter h1{font-family:Georgia,"Times New Roman",serif;font-size:29px;margin:4px 0 3px;color:#6c4d37}
+    .subtitle{font-size:15px;margin:0 0 12px;color:#806955}
+    .verse{font-size:14px;line-height:1.9;margin:6px auto 12px;max-width:350px;color:#594638}
+    .divider{width:90px;height:1px;background:#b99b79;margin:12px auto}
+    .invite{font-size:16px;margin:0 0 3px}
+    .names{font-family:Georgia,serif;font-size:28px;color:#765237;margin:2px 0 12px;direction:ltr}
+    .details{font-size:15px;line-height:1.9}
+    .photo{
+      display:block;width:100%;max-height:330px;object-fit:cover;
+      border-radius:10px;margin:15px auto 12px;
+      box-shadow:0 7px 20px rgba(72,49,31,.16);
+    }
+    .map{
+      display:inline-block;margin-top:5px;padding:9px 16px;border-radius:999px;
+      text-decoration:none;background:#765237;color:#fff8ef;font-size:14px;
+    }
+    .hint{text-align:center;margin:15px 0 0;color:#6f5a48;font-size:14px}
+    .open-btn{
+      margin:16px auto 0;display:block;border:0;border-radius:999px;
+      padding:12px 26px;font-size:16px;cursor:pointer;
+      background:#765237;color:white;box-shadow:0 8px 20px rgba(72,49,31,.2);
+    }
+    .opened .flap{transform:rotateX(178deg);z-index:1}
+    .opened .letter{transform:translateY(0);z-index:4}
+    .opened .seal{opacity:0;transform:translate(-50%,-50%) scale(.7)}
+    .opened .open-btn{display:none}
+    .opened .hint{display:none}
+    .small{font-size:12px;color:#8a7664;margin-top:8px}
+    @media (max-height:700px){
+      .page{align-items:flex-start;padding-top:12px}
+      .letter{padding-top:16px}
+      .photo{max-height:240px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="wrap">
+      <section class="envelope" id="envelope" aria-label="دعوة زفاف إلكترونية">
+        <div class="back"></div>
+
+        <article class="letter">
+          <div class="subtitle">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</div>
+          <div class="verse">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</div>
+          <div class="divider"></div>
+          <p class="invite">بكل الحب والسعادة، نتشرف بدعوتكم لحضور</p>
+          <h1>حفل زفاف</h1>
+          <div class="names">Mohamed &amp; Asmaa</div>
+          <div class="details">
+            <div>السبت 29 أغسطس 2026</div>
+            <div>الساعة 9:00 مساءً</div>
+            <div>قاعة ريفيرا — مدينة ههيا، محافظة الشرقية</div>
+          </div>
+          <img class="photo" src="childhood-photo.jpg" alt="صورة الطفولة">
+          <div class="invite">وجودكم فرحتنا، وحضوركم يسعدنا 🤍</div>
+          <a class="map" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=قاعة+ريفيرا+ههيا+الشرقية">
+             📍 فتح اللوكيشن
+          </a>
+          <div class="small">محمد &amp; أسماء • 29.08.2026</div>
+        </article>
+
+        <div class="flap"></div>
+        <div class="pocket"></div>
+        <div class="seal">M ♥ A</div>
+      </section>
+
+      <button class="open-btn" id="openBtn">افتحي الدعوة ✨</button>
+      <div class="hint">اضغطي على الزر لفتح الظرف</div>
+    </div>
+  </main>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const btn = document.getElementById('openBtn');
+
+    btn.addEventListener('click', () => {
+      envelope.classList.add('opened');
+      // يسمح بظهور محتوى الدعوة بعد بداية الحركة.
+      setTimeout(() => envelope.scrollIntoView({behavior:'smooth', block:'center'}), 250);
+    });
+  </script>
+</body>
+</html>
